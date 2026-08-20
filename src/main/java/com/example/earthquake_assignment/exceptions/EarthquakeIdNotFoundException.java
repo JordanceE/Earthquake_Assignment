@@ -1,7 +1,7 @@
 package com.example.earthquake_assignment.exceptions;
 
 public class EarthquakeIdNotFoundException extends RuntimeException {
-  public EarthquakeIdNotFoundException(String message) {
-    super(message);
-  }
+    public EarthquakeIdNotFoundException(Long id) {
+        super("Earthquake with id " + id + " not found");
+    }
 }

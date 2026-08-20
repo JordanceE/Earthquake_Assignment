@@ -1,12 +1,14 @@
-package com.example.earthquake_assignement.model;
+package com.example.earthquake_assignment.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.Instant;
 
 @Entity
 @Data
+@NoArgsConstructor
 public class Earthquake {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,6 +20,9 @@ public class Earthquake {
     private String location;
     private Instant eventTime;
     private String title;
+    private Double longitude;
+    private Double latitude;
+    private Double depth;
 
     public Earthquake(String usgsEventId, Double magnitude, String magnitudeType, String location, Instant eventTime, String title) {
         this.usgsEventId = usgsEventId;
@@ -26,62 +31,19 @@ public class Earthquake {
         this.location = location;
         this.eventTime = eventTime;
         this.title = title;
-    }
-    protected Earthquake() {}
 
-//    public Long getId() {
-//        return id;
-//    }
-//
-//    public void setId(Long id) {
-//        this.id = id;
-//    }
-//
-//    public Long getUsgsEventId() {
-//        return usgsEventId;
-//    }
-//
-//    public void setUsgsEventId(Long usgsEventId) {
-//        this.usgsEventId = usgsEventId;
-//    }
-//
-//    public Double getMagnitude() {
-//        return magnitude;
-//    }
-//
-//    public void setMagnitude(Double magnitude) {
-//        this.magnitude = magnitude;
-//    }
-//
-//    public String getMagnitudeType() {
-//        return magnitudeType;
-//    }
-//
-//    public void setMagnitudeType(String magnitudeType) {
-//        this.magnitudeType = magnitudeType;
-//    }
-//
-//    public String getLocation() {
-//        return location;
-//    }
-//
-//    public void setLocation(String location) {
-//        this.location = location;
-//    }
-//
-//    public Instant getEventTime() {
-//        return eventTime;
-//    }
-//
-//    public void setEventTime(Instant eventTime) {
-//        this.eventTime = eventTime;
-//    }
-//
-//    public String getTitle() {
-//        return title;
-//    }
-//
-//    public void setTitle(String title) {
-//        this.title = title;
-//    }
+    }
+
+    public Earthquake(String usgsEventId, String magnitudeType, Double magnitude, String location, Instant eventTime, String title, Double longitude, Double latitude, Double depth) {
+        this.magnitudeType = magnitudeType;
+        this.usgsEventId = usgsEventId;
+        this.magnitude = magnitude;
+        this.location = location;
+        this.eventTime = eventTime;
+        this.title = title;
+        this.longitude = longitude;
+        this.latitude = latitude;
+        this.depth = depth;
+    }
+
 }

@@ -1,4 +1,10 @@
 package com.example.earthquake_assignment.dtos;
 
-public record UsgsGeometry() {
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import java.util.List;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+public record UsgsGeometry(String type, List<Double> coordinates) {
+
 }

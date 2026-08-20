@@ -1,9 +1,22 @@
 services:
   postgres:
-    image: 'postgres:latest'
+    image: postgres:16-alpine
+    platform: linux/amd64
+    pull_policy: always
+    container_name: earthquake-postgres
     environment:
-      - 'POSTGRES_DB=mydatabase'
-      - 'POSTGRES_PASSWORD=secret'
-      - 'POSTGRES_USER=myuser'
+      POSTGRES_DB: earthquake_db
+      POSTGRES_USER: earthquake_user
+      POSTGRES_PASSWORD: earthquake_password
     ports:
-      - '5432'
+      - "5432:5432"
+    volumes:
+      - earthquake_postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U earthquake_user -d earthquake_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  earthquake_postgres_data:

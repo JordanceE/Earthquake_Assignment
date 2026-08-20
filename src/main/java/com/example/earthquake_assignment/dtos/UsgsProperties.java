@@ -1,4 +1,13 @@
 package com.example.earthquake_assignment.dtos;
 
-public record UsgsProperty() {
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+public record UsgsProperties(Double mag,
+                             String magType,
+                             String place,
+                             Long time,
+                             String title,
+                             String type
+                             ) {
 }

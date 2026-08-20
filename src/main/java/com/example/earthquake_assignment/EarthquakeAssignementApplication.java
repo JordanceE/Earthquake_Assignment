@@ -1,4 +1,4 @@
-package com.example.earthquake_assignement;
+package com.example.earthquake_assignment;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
